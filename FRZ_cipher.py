@@ -31,3 +31,21 @@ def numbers_to_letters(numbers):
         word += letter
     return word
 
+def encrypt(word, key_numbers):
+    reversed_word = reverse_word(word)
+    reflected_word = reflector(reversed_word)
+    numbers = letters_to_numbers(reflected_word)
+    added_numbers = add_numbers(numbers, key_numbers)
+    encrypted_word = numbers_to_letters(added_numbers)
+    reflected_encrypted_word = reflector(encrypted_word)
+    return reflected_encrypted_word
+
+def run():
+      # key exapmle (N G R) -> (14 , 7 , 18)
+    word = input("Enter a word or text to encrypt: ")
+    key = input("Enter the key numbers (): ")
+    key_numbers = [int(k) for k in key.split()]
+    encrypted_word = encrypt(word, key_numbers)
+    print("Encrypted word: ", encrypted_word)
+
+run()
